@@ -4,26 +4,38 @@ pipeline {
         booleanParam(defaultValue: true, description: '', name: 'userFlag')
     }   
    stages {
-      stage('Say Hello') {
+      stage('java version') {
          steps {
-            echo 'Hello World!'   
             sh 'java -version'
          }
       }
 
 
-        stage ('Clone') {
-            steps {
-                
-                git 'https://github.com/testuser770770/test03.git'
-                ///git branch: 'master', url: "https://github.com/testuser770770/test03.git"
-            }
-        }
 
-
-      stage('Say test') {
+      stage('show files in repo') {
          steps {
-            sh 'pwd'
+            sh 'ls -ltrh '
+         }
+      }
+
+
+      stage('docker pull image httpd') {
+         steps {
+            sh 'docker pull httpd'
+         }
+      }
+
+
+      stage('docker run httpd docker ') {
+         steps {
+            sh 'docker run -d --name my-running-app -p 8090:80 my-apache2'
+         }
+      }
+
+
+      stage('check docker status ') {
+         steps {
+            sh 'docker ps'
          }
       }
 
