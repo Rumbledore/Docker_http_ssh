@@ -66,8 +66,9 @@ pipeline {
             when {
                 branch 'master'
             }
+
             steps {
-                withDockerRegistry(credentialsId: 'docker-docker')  ,  url:'' {
+                withDockerRegistry(credentialsId: 'docker-docker' , url: '')   {
                     sh 'docker push testuser770770/${dockerimagename}:${BUILD_NUMBER}'
                 }
             }
