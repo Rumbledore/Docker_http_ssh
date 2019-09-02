@@ -1,45 +1,80 @@
+<<<<<<< HEAD
+
+def imageStatus = 'UNKNOWN'
+
+
+
 pipeline {
-   agent any
+
+    agent any
+    ///agent { label 'Slave1' }
     parameters {
-        booleanParam(defaultValue: true, description: '', name: 'userFlag')
-    }   
-   stages {
-      stage('java version') {
-         steps {
-            sh 'java -version'
-         }
+        string(defaultValue: "dockertest", description: 'this is the docker image name', name: 'dockerimagename')
+
+    }
+
+
+    stages {
+        stage('git clone') {
+            steps {
+               git 'https://github.com/eyalle/Net4U_Docker.git'
+            }
+        }
+        stage('Building image') {
+            steps{
+                script {
+                     sh "pwd"
+                     sh "cd  docker"
+                     sh "ls -ltrh "
+                     docker.build("${dockerimagename}" + ":$BUILD_NUMBER", " ./docker/")
+                    /// docker.build "-f docker/Dockerfile"  "${dockerimagename}" + ":$BUILD_NUMBER"
+                }
+          }
+
+        }
+
+
+
+
+
+        stage('dockerrun') {
+            steps {
+                sh " docker run -dit --name my_app -p 8090:80 ${dockerimagename}:${BUILD_NUMBER}"
+            }
+        }
+
+    stage('build') {
+      steps {
+        script {
+          imageStatus = sh(returnStdout: true, script: 'docker ps | grep my_app | wc -l')
+        }
       }
+    }
+
+    ///  stage('test docker container') {
+     ///       steps {
+    ///             teststatus = sh(script: "docker ps | grep my_app | wc -l", returnStdout: true).trim()
+    ///                echo "Git committer email: ${teststatus}"
+    ///        }
+    ///   }
 
 
 
-      stage('show files in repo') {
-         steps {
-            sh 'ls -ltrh '
-         }
-      }
 
+      stage('clean all dockers') {
+            steps {
+                echo "${imageStatus}"
+                sh " docker  stop my_app ;docker  rm -f  my_app"
+            }
+       }
 
-      stage('docker pull image httpd') {
-         steps {
-            sh 'docker pull httpd'
-         }
-      }
+    ///    stage('show files') {
+    ///        steps {
+    ///            sh "ls -ltrh"
+    ///        }
+    ///    }
 
-
-      stage('docker run httpd docker ') {
-         steps {
-            sh 'docker run -d --name my-running-app -p 8090:80 my-apache2'
-         }
-      }
-
-
-      stage('check docker status ') {
-         steps {
-            sh 'docker ps'
-         }
-      }
-
-
-
-   }
+    }
 }
+=======
+>>>>>>> 37eb652eac2b34ddecf1e2a3bafc06651b4df37f

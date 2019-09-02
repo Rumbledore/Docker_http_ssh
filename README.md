@@ -1,1 +1,2 @@
-# test03
+This will store the collaborative work for Docker lab.
+If you're looking for a quick way to build & run the Dockerfile, you can use `docker build . -t "test" && docker run -dit --name my_app  -p 8080:80 test`
