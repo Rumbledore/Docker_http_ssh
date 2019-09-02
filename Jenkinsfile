@@ -29,8 +29,6 @@ pipeline {
 
 
 
-
-
         stage('dockerrun') {
             steps {
                 sh " docker run -dit --name my_app -p 8090:80 docker.io/testuser770770/${dockerimagename}:${BUILD_NUMBER}"
