@@ -13,11 +13,7 @@ pipeline {
 
 
     stages {
-        stage('git clone') {
-            steps {
-               git 'https://github.com/eyalle/Net4U_Docker.git'
-            }
-        }
+        
         stage('Building image') {
             steps{
                 script {
