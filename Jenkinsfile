@@ -20,7 +20,7 @@ pipeline {
                      sh "pwd"
                      sh "cd  docker"
                      sh "ls -ltrh "
-                     docker.build("${dockerimagename}" + ":$BUILD_NUMBER", " ./docker/")
+                     docker.build("docker.io/testuser770770/" + "${dockerimagename}" + ":$BUILD_NUMBER", " ./docker/")
                     /// docker.build "-f docker/Dockerfile"  "${dockerimagename}" + ":$BUILD_NUMBER"
                 }
           }
