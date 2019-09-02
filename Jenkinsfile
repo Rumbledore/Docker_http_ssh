@@ -21,14 +21,10 @@ pipeline {
                      sh "cd  docker"
                      sh "ls -ltrh "
                      docker.build("${dockerimagename}" + ":$BUILD_NUMBER", " ./docker/")
-                    /// docker.build "-f docker/Dockerfile"  "${dockerimagename}" + ":$BUILD_NUMBER"
                 }
           }
 
         }
-
-
-
 
 
         stage('dockerrun') {
