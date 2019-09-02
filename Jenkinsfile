@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 def imageStatus = 'UNKNOWN'
 
 
@@ -76,5 +74,4 @@ pipeline {
 
     }
 }
-=======
->>>>>>> 37eb652eac2b34ddecf1e2a3bafc06651b4df37f
+
