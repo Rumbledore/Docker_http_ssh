@@ -7,7 +7,7 @@ pipeline {
     agent any
     ///agent { label 'Slave1' }
     parameters {
-        string(defaultValue: "dockertest", description: 'this is the docker image name', name: 'dockerimagename')
+        string(defaultValue: "repo01", description: 'this is the docker image name', name: 'dockerimagename')
 
     }
 
