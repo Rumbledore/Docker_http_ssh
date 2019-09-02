@@ -62,6 +62,19 @@ pipeline {
             }
        }
 
+        stage('Push docker  image') {
+            when {
+                branch 'master'
+            }
+            steps {
+                withDockerRegistry(credentialsId: 'docker-docker', url:'') {
+                    sh 'docker push ${dockerimagename}:${BUILD_NUMBER}'
+                }
+            }
+        }
+
+
+
     ///    stage('show files') {
     ///        steps {
     ///            sh "ls -ltrh"
