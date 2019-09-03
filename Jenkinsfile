@@ -71,6 +71,13 @@ pipeline {
                 }
             }
         }
+        stage('send email') {
+            when {
+            }
+            steps {
+                emailext body: 'test', subject: 'test', to: 'roei1wan20@gmail.com'
+            }
+        }
 
 
 
