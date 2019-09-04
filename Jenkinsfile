@@ -46,7 +46,7 @@ pipeline {
 
         stage('dockerrun') {
             steps {
-                sh " docker run -dit --name my_app -p 8090:80 docker.io/${user_docker_hub}/${dockerimagename}:initial_docker_image_test_${BUILD_NUMBER}"
+                sh " docker run -dit --name my_app -p 8091:80 docker.io/${user_docker_hub}/${dockerimagename}:initial_docker_image_test_${BUILD_NUMBER}"
             }
         }
 
