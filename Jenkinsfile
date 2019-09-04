@@ -8,6 +8,7 @@ pipeline {
         string(defaultValue: "repo01", description: 'this is the docker image name', name: 'dockerimagename')
         string(defaultValue: "testuser770770", description: 'this is the user name of docker hub', name: 'user_docker_hub')
         string(defaultValue: "docker-docker", description: 'this is the credentials id', name: 'cred_id')
+        password(defaultValue: "rootroot", description: 'this is the credentials id', name: 'root_pass_docker')
 
     }
 
@@ -29,7 +30,7 @@ pipeline {
 
         stage('dockerrun') {
             steps {
-                sh " docker run -dit --name my_app -p 8090:80 -p  23:770  docker.io/${user_docker_hub}/${dockerimagename}:${BUILD_NUMBER}"
+                sh " docker run -dit --name my_app -p 8090:80 -p  23:770  -e root_password=${root_pass_docker} docker.io/${user_docker_hub}/${dockerimagename}:${BUILD_NUMBER}"
             }
         }
 

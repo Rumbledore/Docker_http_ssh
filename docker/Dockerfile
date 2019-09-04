@@ -12,6 +12,8 @@ COPY start_service.sh /root/start_service.sh
 RUN chmod 777  /root/start_service.sh
 RUN chmod 777 /var/www/html/index.html
 USER root
+ENV root_password="root"
+
 
 CMD ["/bin/bash", "/root/start_service.sh" ]
 
