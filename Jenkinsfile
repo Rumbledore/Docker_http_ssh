@@ -68,7 +68,7 @@ pipeline {
 
         stage('Push docker image') {
             when {
-                expression { BRANCH_NAME ==~ /(master|eyal)/
+                expression { BRANCH_NAME ==~ /(master|eyal)/ }
             }
 
             steps {
