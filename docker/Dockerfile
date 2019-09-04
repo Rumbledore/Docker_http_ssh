@@ -1,7 +1,7 @@
 FROM centos:7
 EXPOSE 80
 EXPOSE 770
-RUN yum install httpd  openssh-server passwd  -y
+RUN yum install httpd  openssh-server passwd  net-tools -y
 ADD ./start.sh /start.sh
 RUN mkdir /var/run/sshd
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
