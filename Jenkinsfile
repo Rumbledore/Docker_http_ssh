@@ -5,18 +5,18 @@ pipeline {
 
     agent any
     parameters {
-        string(defaultValue: "repo01", description: 'this is the docker image name', name: 'dockerimagename')
-        string(defaultValue: "testuser770770", description: 'this is the docker image name', name: 'user_docker_hub')
-        string(defaultValue: "docker-docker", description: 'this is the docker image name', name: 'cred_id')
+        string(defaultValue: "repo01", description: 'this is the docker image name', name: 'initial_docker_image_test')
+        string(defaultValue: "testuser770770", description: 'this is the docker image name', name: 'leibo88')
+        string(defaultValue: "docker-docker", description: 'this is the docker image name', name: 'personal_docker')
 
     }
 
 
     stages {
-        "${dockerimagename}" = "initial_docker_image_test"
-        "${user_docker_hub}" = "leibo88"
-        "${cred_id}" = "personal_docker"
-
+        // def dockerimagename = "initial_docker_image_test"
+        // ${user_docker_hub} = "leibo88"
+        // ${cred_id} = "personal_docker"
+        
         stage('Building image') {
             steps {
                 script {
