@@ -73,7 +73,7 @@ pipeline {
 
             steps {
                 withDockerRegistry(credentialsId: "${cred_id}", url: '') {
-                    sh 'docker push ${user_docker_hub}/${dockerimagename}:${BUILD_NUMBER}'
+                    sh 'docker push ${user_docker_hub}/${dockerimagename}:initial_docker_image_test_${BUILD_NUMBER}'
                 }
             }
         }
