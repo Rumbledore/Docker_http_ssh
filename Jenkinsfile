@@ -14,7 +14,7 @@ pipeline {
 
     stages {
         stage('Building image') {
-            steps{
+            steps {
                 script {
                     sh "cd  docker"
                     sh "ls -ltrh "
@@ -40,8 +40,6 @@ pipeline {
             }
 
 
-
-
             stage('clean all dockers') {
                 steps {
                     echo "${imageStatus}"
@@ -51,18 +49,18 @@ pipeline {
 
             stage('Push docker  image') {
                 when {
-                   "${imageStatus}" == "1"
+                    "${imageStatus}" == "1"
                 }
 
                 steps {
-                    withDockerRegistry(credentialsId: '${cred_id}' , url: '')   {
+                    withDockerRegistry(credentialsId: '${cred_id}', url: '') {
                         sh 'docker push ${user_docker_hub}/${dockerimagename}:${BUILD_NUMBER}'
                     }
                 }
             }
 
 
-
         }
     }
 
+}
