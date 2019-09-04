@@ -24,6 +24,8 @@ pipeline {
 
             }
 
+        }
+
 
             stage('dockerrun') {
                 steps {
@@ -61,6 +63,8 @@ pipeline {
 
 
         }
+
     }
+
 
 }
