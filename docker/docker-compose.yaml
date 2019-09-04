@@ -1,21 +1,13 @@
 version: '2'
 services:
-  openldap:
-    image: osixia/openldap
-    container_name: "passwords-openldap"
+  myservice:
+    image: docker.io/testuser770770/repo01:45
+    container_name: "myservice-docker"
+    ports:
+      - 8092:80
+      - 24:770
     environment:
-      LDAP_ORGANISATION: nextcloud
+      rootpassword: root1234
       LDAP_DOMAIN: nextcloud
       LDAP_ADMIN_PASSWORD: nextcloud
-
-  phpldapadmin:
-    image: osixia/phpldapadmin
-    container_name: "passwords-phpldapadmin"
-    ports:
-      - 9090:443
-      - 9091:80
-    links:
-      - openldap
-    environment:
-      PHPLDAPADMIN_LDAP_HOSTS: openldap
 
