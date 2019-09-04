@@ -55,7 +55,7 @@ pipeline {
             }
 
             steps {
-                withDockerRegistry(credentialsId: '${cred_id}', url: '') {
+                withDockerRegistry(credentialsId: "${cred_id}", url: '') {
                     sh 'docker push ${user_docker_hub}/${dockerimagename}:${BUILD_NUMBER}'
                 }
             }
