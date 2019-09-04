@@ -39,6 +39,10 @@ pipeline {
                 script {
                     imageStatus = sh(returnStdout: true, script: 'docker ps | grep my_app | wc -l')
                 }
+
+                timeout(time: 2, unit: "HOURS") {
+                    input message: 'Approve Deploy?', ok: 'Yes'
+                }
             }
         }
 
