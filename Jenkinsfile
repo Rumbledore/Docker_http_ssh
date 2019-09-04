@@ -13,10 +13,10 @@ pipeline {
 
 
     stages {
-        ${dockerimagename} = "initial_docker_image_test"
-        ${user_docker_hub} = "leibo88"
-        ${cred_id} = "personal_docker"
-        
+        "${dockerimagename}" = "initial_docker_image_test"
+        "${user_docker_hub}" = "leibo88"
+        "${cred_id}" = "personal_docker"
+
         stage('Building image') {
             steps {
                 script {
