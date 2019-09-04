@@ -6,8 +6,8 @@ pipeline {
     agent any
     parameters {
         string(defaultValue: "repo01", description: 'this is the docker image name', name: 'dockerimagename')
-        string(defaultValue: "testuser770770", description: 'this is the docker image name', name: 'user_docker_hub')
-        string(defaultValue: "docker-docker", description: 'this is the docker image name', name: 'cred_id')
+        string(defaultValue: "testuser770770", description: 'this is the user name of docker hub', name: 'user_docker_hub')
+        string(defaultValue: "docker-docker", description: 'this is the credentials id', name: 'cred_id')
 
     }
 
