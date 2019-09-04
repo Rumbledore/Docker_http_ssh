@@ -66,9 +66,9 @@ pipeline {
             }
         }
 
-        stage('Push docker  image') {
+        stage('Push docker image') {
             when {
-                branch 'master'
+                expression { BRANCH_NAME ==~ /(master|eyal)/
             }
 
             steps {
