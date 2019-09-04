@@ -8,7 +8,7 @@ pipeline {
         // string(defaultValue: "repo01", description: 'this is the docker image name', name: 'initial_docker_image_test')
         // string(defaultValue: "testuser770770", description: 'this is the docker image name', name: 'leibo88')
         // string(defaultValue: "docker-docker", description: 'this is the docker image name', name: 'personal_docker')
-        string(defaultValue: "initial_docker_image_test", description: 'this is the docker image name', name: 'dockerimagename')
+        string(defaultValue: "net4u_test", description: 'this is the docker image name', name: 'dockerimagename')
         string(defaultValue: "leibo88", description: 'this is the docker image name', name: 'user_docker_hub')
         string(defaultValue: "personal_docker", description: 'this is the docker image name', name: 'cred_id')
 
@@ -35,7 +35,7 @@ pipeline {
                 script {
                     sh "cd  docker"
                     sh "ls -ltrh "
-                    docker.build("docker.io/${user_docker_hub}/" + "${dockerimagename}" + ":$BUILD_NUMBER", " ./docker/")
+                    docker.build("docker.io/${user_docker_hub}/" + "${dockerimagename}" + "initial_docker_image_test:$BUILD_NUMBER", " ./docker/")
 
                 }
 
