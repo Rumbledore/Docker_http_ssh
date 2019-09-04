@@ -53,7 +53,7 @@ pipeline {
 
             when {
                 allOf {
-                    expression { env.imageStatus == "1" }
+                    expression { env.imageStatus == 1 }
                 }
             }
 //            when {
