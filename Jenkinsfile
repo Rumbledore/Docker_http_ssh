@@ -30,7 +30,7 @@ pipeline {
 
         stage('dockerrun') {
             steps {
-                sh " docker run -dit --name "${dockerimagename}" -p 8090:80 -p  23:770  -e rootpassword=${rootDockerPass}  docker.io/${user_docker_hub}/${dockerimagename}:${BUILD_NUMBER}"
+                sh " docker run -dit --name ${dockerimagename} -p 8090:80 -p  23:770  -e rootpassword=${rootDockerPass}  docker.io/${user_docker_hub}/${dockerimagename}:${BUILD_NUMBER}"
             }
         }
 
