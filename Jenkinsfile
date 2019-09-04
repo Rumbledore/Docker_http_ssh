@@ -16,7 +16,13 @@ pipeline {
         // def dockerimagename = "initial_docker_image_test"
         // ${user_docker_hub} = "leibo88"
         // ${cred_id} = "personal_docker"
-        
+        stage('clean env'){
+            sh 'echo "stopping docker containers"'
+            sh 'docker ps -aq | xargs -r docker stop;'
+            sh 'echo "killing docker containers"'
+            sh 'docker ps -aq | xargs -r docker rm;'
+        }
+
         stage('Building image') {
             steps {
                 script {
