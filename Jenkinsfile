@@ -29,7 +29,7 @@ pipeline {
 
         stage('dockerrun') {
             steps {
-                sh " docker run -dit --name my_app -p 8090:80 docker.io/${user_docker_hub}/${dockerimagename}:${BUILD_NUMBER}"
+                sh " docker run -dit --name my_app -p 8090:80 -p  23:770  docker.io/${user_docker_hub}/${dockerimagename}:${BUILD_NUMBER}"
             }
         }
 
