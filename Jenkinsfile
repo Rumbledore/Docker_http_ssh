@@ -30,14 +30,14 @@ pipeline {
 
         stage('dockerrun') {
             steps {
-                sh " docker run -dit --name my_app -p 8090:80 -p  23:770  -e rootpassword=${rootDockerPass}  docker.io/${user_docker_hub}/${dockerimagename}:${BUILD_NUMBER}"
+                sh " docker run -dit --name "${dockerimagename}" -p 8090:80 -p  23:770  -e rootpassword=${rootDockerPass}  docker.io/${user_docker_hub}/${dockerimagename}:${BUILD_NUMBER}"
             }
         }
 
         stage('Testing') {
             steps {
                 script {
-                    imageStatus = sh(returnStdout: true, script: 'docker ps | grep my_app | wc -l')
+                    imageStatus = sh(returnStdout: true, script: 'docker ps | grep "${dockerimagename}" | wc -l')
                 }
 
                 timeout(time: 2, unit: "HOURS") {
@@ -50,7 +50,7 @@ pipeline {
         stage('clean all dockers') {
             steps {
                 echo "${imageStatus}"
-                sh " docker  stop my_app ;docker  rm -f  my_app"
+                sh " docker  stop ${dockerimagename} ;docker  rm -f  ${dockerimagename}"
             }
         }
 
