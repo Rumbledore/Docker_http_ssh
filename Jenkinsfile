@@ -5,9 +5,12 @@ pipeline {
 
     agent any
     parameters {
-        string(defaultValue: "repo01", description: 'this is the docker image name', name: 'initial_docker_image_test')
-        string(defaultValue: "testuser770770", description: 'this is the docker image name', name: 'leibo88')
-        string(defaultValue: "docker-docker", description: 'this is the docker image name', name: 'personal_docker')
+        // string(defaultValue: "repo01", description: 'this is the docker image name', name: 'initial_docker_image_test')
+        // string(defaultValue: "testuser770770", description: 'this is the docker image name', name: 'leibo88')
+        // string(defaultValue: "docker-docker", description: 'this is the docker image name', name: 'personal_docker')
+        string(defaultValue: "initial_docker_image_test", description: 'this is the docker image name', name: 'dockerimagename')
+        string(defaultValue: "leibo88", description: 'this is the docker image name', name: 'user_docker_hub')
+        string(defaultValue: "personal_docker", description: 'this is the docker image name', name: 'cred_id')
 
     }
 
