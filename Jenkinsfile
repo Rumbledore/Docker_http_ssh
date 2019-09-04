@@ -17,10 +17,14 @@ pipeline {
         // ${user_docker_hub} = "leibo88"
         // ${cred_id} = "personal_docker"
         stage('clean env'){
-            sh 'echo "stopping docker containers"'
-            sh 'docker ps -aq | xargs -r docker stop;'
-            sh 'echo "killing docker containers"'
-            sh 'docker ps -aq | xargs -r docker rm;'
+            steps{
+                script{
+                    sh 'echo "stopping docker containers"'
+                    sh 'docker ps -aq | xargs -r docker stop;'
+                    sh 'echo "killing docker containers"'
+                    sh 'docker ps -aq | xargs -r docker rm;'
+                }
+            }
         }
 
         stage('Building image') {
