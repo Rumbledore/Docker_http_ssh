@@ -51,7 +51,7 @@ pipeline {
 
         stage('Push docker  image') {
             when {
-                "${imageStatus}" == "1"
+                imageStatus == "1"
             }
 
             steps {
