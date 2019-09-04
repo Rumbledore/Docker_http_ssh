@@ -50,9 +50,14 @@ pipeline {
         }
 
         stage('Push docker  image') {
+
             when {
-                branch 'master'
-            }
+                allOf {
+                    expression { env.imageStatus == "1" }
+                }
+//            when {
+//                branch 'master'
+//            }
 
             steps {
                 withDockerRegistry(credentialsId: "${cred_id}", url: '') {
