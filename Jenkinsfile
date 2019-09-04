@@ -55,6 +55,7 @@ pipeline {
                 allOf {
                     expression { env.imageStatus == "1" }
                 }
+            }
 //            when {
 //                branch 'master'
 //            }
