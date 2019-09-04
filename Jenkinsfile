@@ -8,6 +8,7 @@ pipeline {
         string(defaultValue: "repo01", description: 'this is the docker image name', name: 'dockerimagename')
         string(defaultValue: "testuser770770", description: 'this is the user name of docker hub', name: 'user_docker_hub')
         string(defaultValue: "docker-docker", description: 'this is the credentials id', name: 'cred_id')
+       string(defaultValue: "master", description: 'this is the baranch's name, name: 'branch_name')
 
     }
 
@@ -51,7 +52,7 @@ pipeline {
 
         stage('Push docker  image') {
             when {
-                branch 'master'
+                branch '${baranch_name}'
             }
 
             steps {
